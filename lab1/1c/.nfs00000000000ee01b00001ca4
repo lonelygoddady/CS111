@@ -1,0 +1,109 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 3 test cases, each for 10 points
+# any comments, suggestions, problem reports are greatly welcomed
+# but I do not guarantee it works, but if should work ;-)
+  cat ../README
+                          cd $TEMPDIR
+# chmod 744 simpsh
+            cLA CS 111 Lab 1c testing script, written by Zhaoxing Bu (zbu@cs.ucla.edu)
+            close(sub_com_fd[i][5]);				 
+            close(sub_com_fd[i][5]);				 
+            close(sub_com_fd[i][5]);				 
+            close(sub_com_fd[i][5]);				 
+                          cp a0.txt ./$TEMPDIR/
+                          echo "==="
+                          echo ""
+          echo "==="
+  echo "==="
+  echo "==="
+  echo ""
+  echo ""
+  echo ""
+                          echo "check if there is time info for --rdonly command"
+  echo "check time info for --command sort, should not be 0 (you can test"
+  echo "corresponding to the running time of uniq the a0.txt"
+                      echo "fatal error! the testing directory is not empty"
+  echo "here you may see multiple running time, but there should be one"
+  echo "in terms of each command's time"
+          echo "please check if there is any error message below"
+                          echo "please DO NOT run multiple testing scripts at the same time"
+                          echo "starting grading"
+  echo "student's README file"
+                          echo "--->test case 1:"
+  echo "--->test case 2:"
+  echo "--->test case 3:"
+  echo "the uniq command by yourself to see the running time in shell"
+                          echo "time should be almost 0"
+  echo "you should only see time info for --wronly, but not for --rdonly"
+      else
+                  else
+                          exit 1
+          fi
+              fi
+                          fi
+Hello world! CS 111!
+          if [ -e "simpsh" ]
+              if [ "$(ls -A $TEMPDIR 2> /dev/null)" == "" ]
+  if [ "${PATH:0:16}" == "/usr/local/cs/bin" ]
+              make || exit
+              mkdir $TEMPDIR
+                          mv simpsh ./$TEMPDIR/
+# no partial credit, students get either 10 or 0
+                          NUM_FAILED=0
+                          NUM_PASSED=0
+# only run this on lnxsrv09.seas.ucla.edu please
+          PATH=/usr/local/cs/bin:$PATH
+# please do not run multiple testing scripts at the same time
+# please make sure that you have a column storing this student's teammate's UID,
+# please use the provided a0.txt and make sure it is not modified by any code
+# REMEMBER to execute PATH=/usr/local/cs/bin:$PATH in shell to call
+              rm -rf simpsh
+              rm -rf $TEMPDIR
+# students can work in a team of two, you only need to write down the score for
+              TEMPDIR="lab1creadergradingtempdir"
+# test case 1 --profile almost no time
+# test case 2 --profile scope
+# test case 3 --profile sort large file
+# the correct gcc for compiling students' work
+  then
+          then
+              then
+# the student who submit the assignmet. in your score file sent back to us,
+# this PATH change is restored after logging out
+# this script automatically changes the PATH value for you
+# thus we can give his/her partner score by the UID column.
+                          time (./simpsh --profile --rdonly test1in.txt)
+  time (./simpsh --rdonly a0.txt --wronly test3out.txt \
+  time (./simpsh --rdonly test2in.txt --profile --wronly test2out.txt)
+# to reader: please read the entire script carefully
+                          touch test1in.txt
+  touch test2in.txt
+  touch test2out.txt
+  touch test3err.txt
+  touch test3out.txt
+      true
+                  true
+# use the provided lab1c_generate_a0.sh and pg98.txt to generate a0.txt
+          --wronly test3err.txt --profile --command 0 1 2 uniq --wait)
