@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
 	char *buffer;
 
 	SortedList_t *Mylist = NULL;
+	SortedListElement_t *nodes;
 
 	Sum_val = malloc(sizeof(struct thread_argu));
 	buffer = malloc(sizeof(char)*100);
@@ -80,6 +81,7 @@ int main(int argc, char *argv[])
 			case 'I':
 				if (optarg != NULL && isdigit(optarg[0])){
 					iteration_num = atoi(optarg);
+					nodes = malloc(sizeof(SortedListElement_t)*iteration_num);
 				}
 				else {
 					perror("Iteration number option argument is nan\n");
