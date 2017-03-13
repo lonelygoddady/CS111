@@ -89,10 +89,13 @@ void command_receive(void* sk_fd)
 		if ((read(socket_fd, buffer, strlen(buffer)))<0)
 			exit(client_error("Error reading socket!\n"));
 		
+		if (strcmp(buffer, "\0") != 0)
+			printf("%s", buffer);
+	
 		valid_com = command_handle(buffer);
 		timeinfo = localtime(&my_time);
 
-		if (strlen(buffer) > 1){
+		if (strcmp(buffer, "\0") !=0){
 			if (valid_com)
 				fprintf(fp, "%d:%d:%d %s\n", timeinfo->tm_hour, 
 					timeinfo->tm_min, timeinfo->tm_sec, buffer);
@@ -113,6 +116,9 @@ void send_msg(void* sk_fd)
 
 	mraa_aio_context temp;
 	temp = mraa_aio_init(0);
+		
+	if (write(socket_fd, "504135743", 10) < 0 )
+		exit(client_error("Error Wirting Socket!\n"));
 
 	while(run_flag)
 	{
@@ -125,11 +131,9 @@ void send_msg(void* sk_fd)
 			memset(buffer, 0, 256);
 		
 			if (F_C == 'F'){
-				// sprintf(buffer, "[504135743] 
-				// 		%d:%d:%d %2.1f.\n",
-				// 	timeinfo->tm_hour,timeinfo->tm_min,
-				// 	timeinfo->tm_sec, F);
-				sprintf(buffer, "504135743 TEMP=%2.1f.\n",F);
+			//	sprintf(buffer, "504135743 %d:%d:%d 
+//%2.1f.",timeinfo->tm_hour,timeinfo->tm_min, timeinfo->tm_sec, F);
+				sprintf(buffer, "[504135743] TEMP=%2.1f",F);
 			}
 			else{
 				// sprintf(buffer, "504135743: %d:%d:%d %2.1f.\n",
