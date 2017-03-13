@@ -161,19 +161,20 @@ int main(int argc, char *argv[])
 	if (client_socket_fd < 0)
 		return -1;
 
-	void* client_sk_fd = &client_socket_fd;
-
 	fp = fopen("log.csv", "w+");
 
-	if (pthread_create(&send_tid, NULL, &send_msg, client_sk_fd) != 0){
+	if (pthread_create(&send_tid, NULL, (void *) &send_msg, (void *) &client_socket_fd) != 0){
 		fprintf(stderr, "Failed to create msg send thread. Exiting program.\n");
 		exit(0);
 	}
 
-	if (pthread_create(&receive_tid, NULL, &command_receive, client_sk_fd) != 0){
+	if (pthread_create(&receive_tid, NULL, (void *) &command_receive, (void *) &client_socket_fd) != 0){
 		fprintf(stderr, "Failed to create msg receive thread. Exiting program.\n");
 		exit(0);
 	}
+
+	pthread_join(send_tid, NULL);
+	pthread_join(receive_tid, NULL);
 
 	fclose(fp);
 	return 0;
