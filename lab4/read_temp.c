@@ -68,7 +68,7 @@ int command_handle(char* buffer)
 			return 0;
 		}
 	}
-	if (strlen(buffer) != 0)
+	if (strlen(buffer) > 2)
 		printf("Command: %s\n", buffer);
 
 	return 1;
@@ -127,13 +127,13 @@ void send_msg(void* sk_fd)
 				// 		%d:%d:%d %2.1f.\n",
 				// 	timeinfo->tm_hour,timeinfo->tm_min,
 				// 	timeinfo->tm_sec, F);
-				sprintf(buffer, "[504135743] TEMP = %2.1f.\n",F);
+				sprintf(buffer, "504135743 TEMP=%2.1f.\n",F);
 			}
 			else{
 				// sprintf(buffer, "504135743: %d:%d:%d %2.1f.\n",
 				// 	timeinfo->tm_hour,timeinfo->tm_min,
 				// 	timeinfo->tm_sec, C);
-				sprintf(buffer, "[504135743] TEMP = %2.1f.\n",C);
+				sprintf(buffer, "504135743 TEMP=%2.1f.\n",C);
 			}
 
 			
