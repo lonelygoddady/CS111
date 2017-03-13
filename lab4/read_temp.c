@@ -92,12 +92,14 @@ void command_receive(void* sk_fd)
 		valid_com = command_handle(buffer);
 		timeinfo = localtime(&my_time);
 
-		if (valid_com)
-			fprintf(fp, "%d:%d:%d %s\n", timeinfo->tm_hour, 
-				timeinfo->tm_min, timeinfo->tm_sec, buffer);
-		else 
-			fprintf(fp, "%d:%d:%d %sI\n", timeinfo->tm_hour, 
-				timeinfo->tm_min, timeinfo->tm_sec, buffer);
+		if (strlen(buffer) > 1){
+			if (valid_com)
+				fprintf(fp, "%d:%d:%d %s\n", timeinfo->tm_hour, 
+					timeinfo->tm_min, timeinfo->tm_sec, buffer);
+			else 
+				fprintf(fp, "%d:%d:%d %sI\n", timeinfo->tm_hour, 
+					timeinfo->tm_min, timeinfo->tm_sec, buffer);
+		}
 	}
 }
 
