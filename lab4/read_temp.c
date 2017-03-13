@@ -63,7 +63,7 @@ int command_handle(char* buffer)
 	}
 	else 
 	{
-		printf("detect invalid command\n");
+		printf("detect invalid command %s\n", buffer);
 		return 0;
 	}
 
