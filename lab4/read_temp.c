@@ -63,11 +63,14 @@ int command_handle(char* buffer)
 	}
 	else 
 	{
-		printf("detect invalid command %s\n", buffer);
-		return 0;
+		if (strlen(buffer) != 0){
+			printf("detect invalid command %s\n", buffer);
+			return 0;
+		}
 	}
+	if (strlen(buffer) != 0)
+		printf("Command: %s\n", buffer);
 
-	printf("Command: %s\n", buffer);
 	return 1;
 }
 
@@ -85,7 +88,6 @@ void command_receive(void* sk_fd)
 		memset(buffer, 0, 256);
 		if ((read(socket_fd, buffer, strlen(buffer)))<0)
 			exit(client_error("Error reading socket!\n"));
-		printf("%s\n",buffer);
 		
 		valid_com = command_handle(buffer);
 		timeinfo = localtime(&my_time);
@@ -131,7 +133,7 @@ void send_msg(void* sk_fd)
 				// sprintf(buffer, "504135743: %d:%d:%d %2.1f.\n",
 				// 	timeinfo->tm_hour,timeinfo->tm_min,
 				// 	timeinfo->tm_sec, C);
-					sprintf(buffer, "[504135743] TEMP = %2.1f.\n",C);
+				sprintf(buffer, "[504135743] TEMP = %2.1f.\n",C);
 			}
 
 			
