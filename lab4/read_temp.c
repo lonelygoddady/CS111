@@ -86,7 +86,7 @@ void command_receive(void* sk_fd)
 	while(run_flag)
 	{
 		memset(buffer, 0, 256);
-		if ((read(socket_fd, buffer, strlen(buffer)))<0)
+		if ((read(socket_fd, buffer, sizeof(buffer)))<0)
 			exit(client_error("Error reading socket!\n"));
 		
 		if (strcmp(buffer, "\0") != 0)
@@ -133,13 +133,13 @@ void send_msg(void* sk_fd)
 			if (F_C == 'F'){
 			//	sprintf(buffer, "504135743 %d:%d:%d 
 //%2.1f.",timeinfo->tm_hour,timeinfo->tm_min, timeinfo->tm_sec, F);
-				sprintf(buffer, "[504135743] TEMP=%2.1f",F);
+				sprintf(buffer, "504135743 TEMP = %0.1f",F);
 			}
 			else{
 				// sprintf(buffer, "504135743: %d:%d:%d %2.1f.\n",
 				// 	timeinfo->tm_hour,timeinfo->tm_min,
 				// 	timeinfo->tm_sec, C);
-				sprintf(buffer, "504135743 TEMP=%2.1f.\n",C);
+				sprintf(buffer, "504135743 TEMP = %0.1f",C);
 			}
 
 			
