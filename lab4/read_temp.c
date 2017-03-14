@@ -68,7 +68,7 @@ int command_handle(char* buffer)
 			return 0;
 		}
 	}
-	if (strlen(buffer) > 2)
+	if (strlen(buffer) > 1)
 		printf("Command: %s\n", buffer);
 
 	return 1;
@@ -134,22 +134,22 @@ void send_msg(void* sk_fd)
 			//	sprintf(buffer, "504135743 %d:%d:%d 
 //%2.1f.",timeinfo->tm_hour,timeinfo->tm_min, timeinfo->tm_sec, F);
 				sprintf(buffer, "504135743 TEMP = %0.1f",F);
+				fprintf(fp, "%d:%d:%d %0.1f\n", timeinfo->tm_hour, 
+				timeinfo->tm_min, timeinfo->tm_sec, F);
 			}
 			else{
 				// sprintf(buffer, "504135743: %d:%d:%d %2.1f.\n",
 				// 	timeinfo->tm_hour,timeinfo->tm_min,
 				// 	timeinfo->tm_sec, C);
 				sprintf(buffer, "504135743 TEMP = %0.1f",C);
+				fprintf(fp, "%d:%d:%d %0.1f\n", timeinfo->tm_hour, 
+				timeinfo->tm_min, timeinfo->tm_sec, C);
 			}
-
 			
 			if ((write(socket_fd, buffer, strlen(buffer))) < 0)			
 				exit(client_error("Error writing socket!\n"));
 
 			printf("%s\n", buffer);	
-			fprintf(fp, "%d:%d:%d %s\n", timeinfo->tm_hour, 
-				timeinfo->tm_min, timeinfo->tm_sec, buffer);
-			
 			sleep(period);
 		}
 	}
